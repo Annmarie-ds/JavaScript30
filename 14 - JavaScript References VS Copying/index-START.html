@@ -13,7 +13,8 @@
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // and we want to make a copy of it.
-
+    const team = players;
+    console.log(players, team);
     // You might think we can just do something like this:
 
     // however what happens when we update that array?
@@ -25,13 +26,20 @@
     // Why? It's because that is an array reference, not an array copy. They both point to the same array!
 
     // So, how do we fix this? We take a copy instead!
-
+    const team2 = players.slice();
+    console.log(team2);
     // one way
 
     // or create a new array and concat the old one in
-
+    const team3 = [].concat(players);
+    console.log(team3);
     // or use the new ES6 Spread
+    const team4 = [...players];
+    team4[2] = 'Josh';
+    console.log(team4);
 
+    const team5 = Array.from(players);
+    console.log(team5);
     // now when we update it, the original one isn't changed
 
     // The same thing goes for objects, let's say we have a person object
@@ -43,12 +51,26 @@
     };
 
     // and think we make a copy:
-
+    const captain = Object.assign({}, person, { number: 99, age: 20});
+    console.log(captain);
     // how do we take a copy instead?
 
     // We will hopefully soon see the object ...spread
-
+    const captain2 = {...person};
+    console.log(captain2);
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    const wes = {
+      name: 'Wes',
+      age: 25,
+      social: {
+        twitter: '@wesbos',
+        facebook: 'wesbos.developer'
+      }
+    };
+
+    const dev = Object.assign({}, wes);
+
+    const dev2 = JSON.parse(JSON.stringify(wes));
 
   </script>
 
