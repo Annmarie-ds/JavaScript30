@@ -7,6 +7,25 @@
 </head>
 <body>
 <script>
+  // listen for key pressed
+  // create an array
+  // create a const for a secret code
+  // push the keys into array
+  // max no of keys in array = secretCode.length
+  // use splice to replace with new items in array
+  // if statement for when secretCode == keys
+
+  const keys = []
+  const secretCode = `hello`;
+  window.addEventListener(`keyup`, (e) => {
+    keys.push(e.key);
+    keys.splice(-secretCode.length - 1, keys.length - secretCode.length);
+    console.log(keys);
+    if (keys.join('').includes(secretCode)) {
+      console.log(`You did it!`);
+      cornify_add();
+    }
+  });
 </script>
 </body>
 </html>
